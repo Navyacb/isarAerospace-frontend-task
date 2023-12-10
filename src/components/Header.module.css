@@ -1,0 +1,8 @@
+.header.appBar {
+    background-color:  black;
+    display: flex;
+  }
+
+.logo{
+  width: 60%;
+}

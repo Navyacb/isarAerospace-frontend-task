@@ -1,0 +1,6 @@
+.container.width{
+  max-width: 100%;
+  padding: 0px;
+  background: black;
+  height: 100vh;
+}

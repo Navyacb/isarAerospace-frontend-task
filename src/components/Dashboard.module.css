@@ -6,3 +6,9 @@
     color: white;
     text-decoration: none;
 }
+.margin.bottom{
+    margin-bottom: 20px;
+}
+.spaceAround.margin{
+    margin-left: 20px;
+}

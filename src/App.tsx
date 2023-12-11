@@ -9,7 +9,6 @@ function App() {
   const spectrumDataReducer = (state:ISpectrumData,action:{ type: string, payload: any})=>{
     switch(action.type){
       case 'UPDATE_DATA':
-        console.log('1')
         return {...action.payload}
       default: 
       return state

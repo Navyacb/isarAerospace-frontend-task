@@ -5,7 +5,6 @@ import { SpectrumDataContext } from '../state-management/SpectrumDataContext';
 import { DataDisplay } from './DataDisplay';
 
 export const SpectrumLineChart = ()=>{
-  console.log('2')
 
   const {spectrumData} = useContext(SpectrumDataContext)
 

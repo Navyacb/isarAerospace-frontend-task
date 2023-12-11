@@ -6,8 +6,8 @@ import { SpectrumLineChart } from './SpectrumLineChart';
 
 export const AssignmentBDashboard = ()=>{
     const {spectrumDataDispatch,spectrumData} = useContext(SpectrumDataContext)
-    const [openModal, setOpenModal] = useState(false)
     const socketRef = useRef<WebSocket | null>(null)
+    const [shouldFetchData, setShouldFetchData] = useState(true)
 
     const fetchDataFromWebSocket = () => {
         if (!socketRef.current || socketRef.current.readyState !== WebSocket.OPEN) {
@@ -23,8 +23,16 @@ export const AssignmentBDashboard = ()=>{
                 isAscending: liveData.IsAscending,
                 isActionRequired: liveData.IsActionRequired,
             }
-            console.log(obj)
-            spectrumDataDispatch({ type: 'UPDATE_DATA', payload: obj })
+
+                if(obj.isActionRequired) {
+                    spectrumDataDispatch({ type: 'UPDATE_DATA', payload: obj })
+                    console.log('Closing WebSocket...');
+                    if (socket.readyState === WebSocket.OPEN) {
+                        socket.close()
+                    }
+                    return
+                }
+              spectrumDataDispatch({ type: 'UPDATE_DATA', payload: obj })
             }
             socket.onclose = (event) => {
                 console.error('WebSocket closed:', event)
@@ -39,26 +47,32 @@ export const AssignmentBDashboard = ()=>{
         }
       
         fetchData()
+
+        const reconnectInterval = setInterval(() => {
+            if (socketRef.current) {
+              socketRef.current.close();
+            }
+            fetchDataFromWebSocket();
+          }, 10000);
       
-          const intervalId = setInterval(() => {
-            fetchData()
-          }, 1000000)
       
-          // Clear the interval when the component is unmounted
+    // Clear the interval when the component is unmounted
           return () => {
-            clearInterval(intervalId)
             if (socketRef.current) {
                 socketRef.current.close()
               }
+              clearInterval(reconnectInterval);
           }
       }, [])
 
       const handleAction = ()=>{
-        //we can create a model here 
+    
+        //we can create a model here giving option to user to act or not act
         alert('Critical Action Required! The launch vehicle requires immediate action. Please act using the provided endpoint.')
-        // we have to perform some action to end point api , was not clear what should be passed to API request
+        // we have to perform some action to end point api , was not clear what should be passed to API request so i could not exactly post
         //https://webfrontendassignment-isaraerospace.azurewebsites.net/api/ActOnSpectrum
-
+        fetchDataFromWebSocket()
+        
       }
 
     return (

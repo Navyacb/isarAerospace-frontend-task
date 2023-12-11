@@ -55,9 +55,9 @@ Tech used : React , Typescript , material UI , React query , Context API , react
 To start - clone the repository to local, npm install , npm start
 
 Src folders -
-components : to store all reusable component files
-images: to store all images used in the application
-state management : to store the all context state management used in the application
+1. components : to store all reusable component files
+2. images: to store all images used in the application
+3. state management : to store the all context state management used in the application
 
 In the dashboard , you can click on AssignmentA and assignmentB to view its GUI as expected and when you click on the Isar aerospace logo at top you go back to main dashboard. For Assignment B live stream data, when there is 'action required' from crew it paused for few seconds for use to take action and then moves forward.
 I was not clear with the requirement on what to do to take action from crew member , if given clarity can implement the same.

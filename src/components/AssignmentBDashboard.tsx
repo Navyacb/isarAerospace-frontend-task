@@ -1,13 +1,12 @@
 import { useEffect , useContext, useRef, useState} from 'react';
 import { SpectrumDataContext } from '../state-management/SpectrumDataContext';
-import { Button, Grid, Paper , Typography , Modal, Backdrop, Fade} from '@mui/material';
+import { Button, Grid, Paper , Typography} from '@mui/material';
 import styles from './AssignmentBDashboard.module.css'
 import { SpectrumLineChart } from './SpectrumLineChart';
 
 export const AssignmentBDashboard = ()=>{
     const {spectrumDataDispatch,spectrumData} = useContext(SpectrumDataContext)
     const socketRef = useRef<WebSocket | null>(null)
-    const [shouldFetchData, setShouldFetchData] = useState(true)
 
     const fetchDataFromWebSocket = () => {
         if (!socketRef.current || socketRef.current.readyState !== WebSocket.OPEN) {
@@ -26,7 +25,7 @@ export const AssignmentBDashboard = ()=>{
 
                 if(obj.isActionRequired) {
                     spectrumDataDispatch({ type: 'UPDATE_DATA', payload: obj })
-                    console.log('Closing WebSocket...');
+                    //close the websocket for short time
                     if (socket.readyState === WebSocket.OPEN) {
                         socket.close()
                     }
@@ -69,10 +68,10 @@ export const AssignmentBDashboard = ()=>{
     
         //we can create a model here giving option to user to act or not act
         alert('Critical Action Required! The launch vehicle requires immediate action. Please act using the provided endpoint.')
-        // we have to perform some action to end point api , was not clear what should be passed to API request so i could not exactly post
+        // we have to perform some action to end point api , was not clear what should be passed to API request so i could not exactly post/PUT
         //https://webfrontendassignment-isaraerospace.azurewebsites.net/api/ActOnSpectrum
         fetchDataFromWebSocket()
-        
+
       }
 
     return (

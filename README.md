@@ -49,3 +49,25 @@ will need to act on it.
 We look forward to receiving your results!
 
 --------------------------------------------------------------------------------------------------
+Developer Comments:
+
+Tech used : React , Typescript , material UI , React query , Context API , react hooks , websocket , axios , react router, recharts
+To start - clone the repository to local, npm install , npm start
+
+Src folders -
+components : to store all reusable component files
+images: to store all images used in the application
+state management : to store the all context state management used in the application
+
+In the dashboard , you can click on AssignmentA and assignmentB to view its GUI as expected and when you click on the Isar aerospace logo at top you go back to main dashboard. For Assignment B live stream data, when there is 'action required' from crew it paused for few seconds for use to take action and then moves forward.
+I was not clear with the requirement on what to do to take action from crew member , if given clarity can implement the same.
+
+Assignment C:
+1.  Ensuring a consistent naming convention for endpoints, query parameters, and response structures.
+2.  Including clear error messages and details in the response body from API end point.
+3.  Reviewing the authentication and authorization mechanisms in place which ensures security.
+4.  Ensuring that the API is well-documented, providing clear instructions on endpoints, request/response formats, error handling, and any authentication requirements.
+5.  If the API returns large datasets, evaluate whether implementing pagination could enhance performance for clients or using react Infinate loadng.
+6.  Using useEffect , react hooks or reduc for better state managemnet , handling side effects using redux-thunk.
+
+I 

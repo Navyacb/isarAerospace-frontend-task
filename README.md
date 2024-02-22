@@ -1,15 +1,10 @@
-Dear Candidate,
-Thank you very much for your interest in joining Isar Aerospace team. As part of our recruiting
-process, we kindly ask that you complete a technical assessment. Please submit your answers
-if possible within 1 week as a compressed filed or a repository link. We are very much looking
-forward to your hand-in and hope you have fun working on it!
-
 Assignment:
 Assignment Scenario
 “Spectrum”, the launch vehicle built by Isar Aerospace just performed a successful lift-off from
 the launch pad and is flying towards Earth orbit. A web service provides live insights into
 Spectrum’s sensor system during its maiden flight. Your task is to visualize these sensor values
 in a web interface so that the crew in ground control can check if everything is okay.
+
 Assignment A
 Please consider the following API endpoint SpectrumStatus in the provided server.
 https://webfrontendassignment-isaraerospace.azurewebsites.net/api/SpectrumStatus
